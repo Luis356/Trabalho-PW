@@ -1,0 +1,38 @@
+#area {
+    position: relative;
+    width: 320px;
+    height: 270px;
+    margin: 0 auto;
+    width: 50%;
+}
+
+form,
+.titu {
+    display: block;
+    padding: 10px;
+}
+
+form {
+    width: 270px;
+    margin: auto;
+    background-color: #262626;
+}
+
+.titu {
+    color: #FFF;
+    text-align: left;
+}
+
+input {
+    display: inline-block;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+}
