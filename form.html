@@ -3,12 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Pagina Principal</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="estilos/coluna.css">
     <link rel="stylesheet" href="estilos/main.css">
     <link rel="stylesheet" href="estilos/fonts.css">
     <link rel="stylesheet" href="estilos/formulario.css">
     <link rel="shortcut icon" href="imagens/contato.png">
+
+    <script src="jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#cp").blur(function () {
+                $.post("busca.php", "cep=" + $("#cp").val(), function (data) {
+                    if (data != "") {
+                        var obj = jQuery.parseJSON(data);
+                        $("#cit").val(obj.localidade);
+                        $("#logr").val(obj.logradouro);
+                        $("#br").val(obj.bairro);
+                        $("#dd").val(obj.ddd);
+                        $("#uf").val(obj.uf);
+                    }
+                })
+            });
+        });
+    </script>
+
+
 </head>
 
 <body>
@@ -46,7 +67,7 @@
 
             <div id="conteudo" class="divs">
 
-                <h1>Contato</h1>
+                <h1>Cadastre-se</h1>
 
                 <div id="area">
                     <form id="formulario">
@@ -76,11 +97,26 @@
                             <input type="text" name="cit" id="cit">
 
 
+                            <label for="logr" class="titu">Logradouro: </label>
+                            <input type="text" name="logr" id="logr">
+
+
                             <label for="br" class="titu">Bairro: </label>
                             <input type="text" name="br" id="br">
 
+
+                            <label for="dd" class="titu">DDD: </label>
+                            <input type="number" name="dd" id="dd">
+
+
+                            <label for="uf" class="titu">UF: </label>
+                            <input type="text" name="uf" id="uf">
+
+
                             <br><br>
+
                             <input type="submit" value="Cadastrar">
+
                         </fieldset>
                     </form>
                 </div>
